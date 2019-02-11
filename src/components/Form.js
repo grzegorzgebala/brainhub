@@ -7,7 +7,7 @@ class Form extends React.Component {
 	constructor (props) {
 		super(props)
 		this.state = {
-			startDate: moment()
+			startDate: new Date()
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,7 +16,7 @@ class Form extends React.Component {
 	handleChange(date) {
 		this.setState({
 	  		startDate: date
-		})
+		});
 	}
 
 	handleSubmit(e) {
@@ -31,14 +31,15 @@ class Form extends React.Component {
 				<input type="text" name="name" placeholder="Name" />
 				<input type="text" name="surname" placeholder="Surname" />
 				<input type="text" name="mail" placeholder="Mail" />
-				<DatePicker	
-					selected={ this.state.date }
-              		onSelect={this.handleSelect}
-  					onChange={this.handleChange}
-              		name="startDate"
-              		dateFormat="MM/DD/YYYY"
+				<DatePicker
+					name="DatePicker"
+					onSelect={this.handleSubmit}
+					onChange={this.handleChange}
+					value={this.state.startDate}
+					showTimeSelect
+					dateFormat="Pp"
 				/>
-				<button>Submit</button>
+				<button className="btn btn-primary">Submit</button>
 			</form>
 		);
 	}
