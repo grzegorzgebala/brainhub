@@ -10,9 +10,10 @@ mongoose.connect('mongodb://localhost/brainhub');
 // Express
 let app = express();
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+
 
 //Routes
 app.use('/api', require('./routes/api'));

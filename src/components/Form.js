@@ -1,7 +1,6 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import '../../node_modules/react-datepicker/dist/react-datepicker.css';
-import moment from 'moment';
 
 class Form extends React.Component {
 	constructor (props) {
@@ -10,19 +9,12 @@ class Form extends React.Component {
 			startDate: new Date()
 		};
 		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange(date) {
 		this.setState({
 	  		startDate: date
 		});
-	}
-
-	handleSubmit(e) {
-		e.preventDefault();
-		let main = this.state.startDate
-		console.log(main.format('L'));
 	}
 
 	render () {
@@ -33,12 +25,10 @@ class Form extends React.Component {
 				<input type="text" name="mail" placeholder="Mail" />
 				<DatePicker
 					name="DatePicker"
-					onSelect={this.handleSubmit}
 					onChange={this.handleChange}
-					value={this.state.startDate}
-					showTimeSelect
-					dateFormat="Pp"
-				/>
+					selected={this.state.startDate}
+        			dateFormat="yyyy/MM/dd"			
+        		/>
 				<button className="btn btn-primary">Submit</button>
 			</form>
 		);

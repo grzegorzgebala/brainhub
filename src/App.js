@@ -49,8 +49,6 @@ class App extends React.Component {
 			.then(res => console.log(res.data));
 	}
 
-
-
 	render() {
 		return (
 			<div className="container">
@@ -60,7 +58,7 @@ class App extends React.Component {
 					name={ this.state.name }
 					surname={ this.state.surname }
 					mail={ this.state.mail }
-					date={ this.state.startDate }
+					date={ this.state.date }
 					error={ this.state.error }
 				/>
 			</div>
