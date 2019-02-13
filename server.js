@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 // MongoDB
-mongoose.connect('mongodb://localhost/brainhub');
+mongoose.connect('mongodb://localhost/brainhub', { useNewUrlParser: true });
 
 // Express
 let app = express();
@@ -17,6 +17,9 @@ app.use(bodyParser.json());
 
 //Routes
 app.use('/api', require('./routes/api'));
+app.use('/api/poroductsList', require('./routes/api'));
+
+
 
 // Start server
 app.listen(4000);

@@ -23,7 +23,22 @@ input {
   margin: 10px;
 }
 
+form {
+  text-align: center;
+}
+
 button {
   font-size: 12px;
   padding: 10px; 
+}
+
+.list {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.listElement {
+  display: inline-block;
+  margin: 10px;
+  text-align: left;
 }

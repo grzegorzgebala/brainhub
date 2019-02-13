@@ -21,11 +21,13 @@ class App extends React.Component {
 		const name = e.target.elements.name.value;
 		const surname = e.target.elements.surname.value;
 		const mail = e.target.elements.mail.value;
+
 		const newUser = {
-			name: this.state.name,
-			surname: this.state.surname,
-			mail: this.state.mail,
-			date: this.state.date
+			name: e.target.elements.name.value,
+			surname: e.target.elements.surname.value,
+			mail: e.target.elements.mail.value,
+			date: e.target.elements.DatePicker.value,
+			error: ""
 		}
 
 		if ( name && surname && mail ) {
@@ -36,6 +38,10 @@ class App extends React.Component {
 				date: e.target.elements.DatePicker.value,
 				error: ""
 			});
+
+			axios.post('http://localhost:4000/api/products/', newUser)
+			.then(res => console.log(res.data));
+
 		} else {
 			this.setState({
 				name: undefined,
@@ -45,8 +51,7 @@ class App extends React.Component {
 				error: "Please enter the value."
 			});	
 		}
-		axios.post('http://localhost:4000/api/products/', newUser)
-			.then(res => console.log(res.data));
+		
 	}
 
 	render() {
@@ -54,13 +59,7 @@ class App extends React.Component {
 			<div className="container">
 				<Titles />
 				<Form getUser={this.getUser} />
-				<List 
-					name={ this.state.name }
-					surname={ this.state.surname }
-					mail={ this.state.mail }
-					date={ this.state.date }
-					error={ this.state.error }
-				/>
+				<List />
 			</div>
 		);
 	}
