@@ -25,8 +25,8 @@ class Form extends React.Component {
 				<input type="text" name="mail" placeholder="Mail" />
 				<DatePicker
 					name="DatePicker"
-					onChange={this.handleChange}
 					selected={this.state.startDate}
+					onChange={this.handleChange}
         			dateFormat="yyyy/MM/dd"			
         		/>
 				<button className="btn btn-primary">Submit</button>

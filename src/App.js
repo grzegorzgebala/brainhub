@@ -49,7 +49,7 @@ class App extends React.Component {
 				mail: undefined,
 				date: undefined,
 				error: "Please enter the value."
-			});	
+			});
 		}
 		
 	}

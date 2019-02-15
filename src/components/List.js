@@ -23,7 +23,7 @@ class List extends Component {
 
         return (
             <div>
-                <ul className="list">
+                <ul className="list"> User List
                     {	
                         this.state.users.map(
                             user => <li>
@@ -31,6 +31,7 @@ class List extends Component {
                             			<div className="listElement">{user.surname}</div>
                             			<div className="listElement">{user.mail}</div>
                             			<div className="listElement">{user.date}</div>
+                            			<div className="listElement">{user.error}</div>
                             		</li>
                         )
                     }

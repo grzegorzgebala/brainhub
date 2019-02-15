@@ -7,7 +7,8 @@ const productSchema = new mongoose.Schema({
 	name: String,
 	surname: String,
 	mail: String,
-	date: Date
+	date: Date,
+	error: String
 });
 
 // Return model
