@@ -28,10 +28,10 @@ class List extends Component {
                     {	
                         this.state.users.map(
                             (user, index) => <li key={index}>
-                            			<div className="listElement">{user.name}</div>
-                            			<div className="listElement">{user.surname}</div>
-                            			<div className="listElement">{user.mail}</div>
-                            			<div className="listElement">{user.date}</div>
+                            			<div className="listElement">{ user.name }</div>
+                            			<div className="listElement">{ user.surname }</div>
+                            			<div className="listElement">{ user.mail }</div>
+                            			<div className="listElement">{ user.date }</div>
                             		</li>
                         )
                     }
