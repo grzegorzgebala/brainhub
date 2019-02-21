@@ -27,7 +27,7 @@ class Form extends React.Component {
 					name="DatePicker"
 					selected={this.state.startDate}
 					onChange={this.handleChange}
-        			dateFormat="yyyy/MM/dd"			
+        			dateFormat="yyyy/MM/dd"	
         		/>
 				<button className="btn btn-primary">Submit</button>
 			</form>

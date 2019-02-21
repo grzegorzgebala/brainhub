@@ -13,7 +13,7 @@ class App extends React.Component {
 		surname: undefined,
 		mail: undefined,
 		date: undefined,
-		error: undefined
+		error: undefined,
 	}
 
 	getUser = async (e) => {

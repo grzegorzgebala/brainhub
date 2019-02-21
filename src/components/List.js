@@ -11,11 +11,12 @@ class List extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/productsList')
+        axios.get('http://localhost:4000/api/productsList')
             .then( (response) => {
                 this.setState({users: response.data});
             })
     }
+
 
     render() {
 
@@ -26,12 +27,11 @@ class List extends Component {
                 <ul className="list"> User List
                     {	
                         this.state.users.map(
-                            user => <li>
+                            (user, index) => <li key={index}>
                             			<div className="listElement">{user.name}</div>
                             			<div className="listElement">{user.surname}</div>
                             			<div className="listElement">{user.mail}</div>
                             			<div className="listElement">{user.date}</div>
-                            			<div className="listElement">{user.error}</div>
                             		</li>
                         )
                     }
