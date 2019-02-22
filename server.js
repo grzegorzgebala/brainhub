@@ -14,12 +14,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
 //Routes
 app.use('/api', require('./routes/api'));
 app.use('/api/poroductsList', require('./routes/api'));
-
-
 
 // Start server
 app.listen(4000);

@@ -3,13 +3,27 @@ import '../../node_modules/react-datepicker/dist/react-datepicker.css';
 import TextField from '@material-ui/core/TextField';
 import './Form.css';
 import axios from 'axios';
+import { Modal } from 'react-bootstrap';
 
 class Form extends React.Component {
 	state = {
 		name: "",
 		surname: "",
 		mail: "",
-		date: ""
+		date: "",
+		show: false,
+	}
+
+	handleClose = () => {
+		this.setState({ show: false });
+	}
+
+	handleShow = () => {
+		this.setState({ show: true });
+	}
+
+	refreshPage = () => { 
+		window.location.reload(); 
 	}
 	
 	validate = (e) => {
@@ -18,27 +32,35 @@ class Form extends React.Component {
 	      nameError: "",
 	      surnameError: "",
 	      mailError: "",
-	      dateError: ""
+	      dateError: "",
+	      showErrorName: undefined,
+	      showErrorSurname: undefined,
+	      showErrorMail: undefined,
+	      showErrorDate: undefined
 	    };
 
 		if (e.name.length < 4) {
 			isError = true;
 			errors.nameError = "Name needs to be atleast 4 char long";
+			errors.showErrorName = true;
 		};
 
 		if (e.surname.length < 4) {
 			isError = true;
 			errors.surnameError = "Surname needs to be atleast 4 char long";
+			errors.showErrorSurname = true;
 		};
 
 		if (e.mail.indexOf("@") === -1) {
 	      isError = true;
 	      errors.mailError = "Requires valid email";
+	      errors.showErrorMail = true;
 	    };
 
 		if (e.date < new Date().toISOString().slice(0,10)) {
 	      isError = true;
-	      errors.mailError = "Requires valid date";
+	      errors.dateError = "Requires valid date";
+	      errors.showErrorDate = true;
 	    };
 		
 		this.setState({
@@ -60,8 +82,9 @@ class Form extends React.Component {
 		}
 
 		const err = this.validate(newUser);
-		
+
 		if (!err) {
+		this.handleShow();
 		axios.post('http://localhost:4000/api/products/', newUser)
 		.then(res => console.log(res.data));
 		} 
@@ -77,7 +100,7 @@ class Form extends React.Component {
 						label="Name"
 						name="name" 
 	          			placeholder="Name"
-	          			errortext={this.state.nameError}
+	          			error = { this.state.showErrorName }
 					/><br />
 					<TextField
 						className="field"
@@ -85,7 +108,7 @@ class Form extends React.Component {
 						label="Surname"
 						name="surname"
 						placeholder="Surname"
-						errortext={this.state.surnameError}
+						error = { this.state.showErrorSurname }
 					/>
 					<TextField
 						className="field"
@@ -93,7 +116,7 @@ class Form extends React.Component {
 						label="Mail"
 						name="mail"
 						placeholder="Mail"
-						errortext={this.state.mailError} 
+						error = { this.state.showErrorMail } 
 					/>
 					<TextField
 						className="field"
@@ -101,12 +124,23 @@ class Form extends React.Component {
 				        name="DatePicker"
 				        label="Meetup date"
 				        type="date"
-				        defaultValue={new Date().toISOString().slice(0,10)}
-				        InputLabelProps={{
-				          shrink: true,
-				        }}
+				        defaultValue = { new Date().toISOString().slice(0,10) }
+				        error = { this.state.showErrorDate }
 				    />
 					<button className="btn btn-primary">Submit</button>
+					<Modal 
+						show = { this.state.show } 
+						onHide = { this.handleClose }>
+						<Modal.Header closeButton onClick = { this.refreshPage }>
+							<Modal.Title>Sent confirmation!</Modal.Title>
+						</Modal.Header>
+						<Modal.Body>Woohoo, your data were sucesfully sent!</Modal.Body>
+						<Modal.Footer>
+							<button variant="primary" onClick = { this.refreshPage } >
+								Close
+							</button>
+						</Modal.Footer>
+					</Modal>
 				</div>
 				<div className="errors">
 					<div>{ this.state.nameError }</div>

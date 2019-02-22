@@ -14,7 +14,6 @@ let Product = require('../models/product');
 Product.methods(['get', 'put', 'post', 'delete']);
 Product.register(router, '/products');
 
-
 router.get('/productsList', function(req, res, next){
 	console.log('Get request for all productsList');
 	Products.find({})
@@ -26,7 +25,6 @@ router.get('/productsList', function(req, res, next){
 		}
 	})
 });
-
 
 // Return router
 module.exports = router;

@@ -3,13 +3,12 @@ import { shallow } from 'enzyme';
 import Form from './Form';
 
 it('renders without crashing', () => {
-  shallow(<Form />);
+	const wrapper = shallow(
+		<Form />
+	);
+	expect(wrapper).toMatchSnapshot();
 });
 
-it('should validate values', () => {
+it('should validate errors', () => {
 
-});
-
-it('should get new user', () => {
-	
 });

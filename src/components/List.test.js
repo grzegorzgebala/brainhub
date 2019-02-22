@@ -3,5 +3,8 @@ import { shallow } from 'enzyme';
 import List from './List';
 
 it('renders without crashing', () => {
-  shallow(<List />);
+	const wrapper = shallow(
+		<List />
+	);
+	expect(wrapper).toMatchSnapshot();
 });

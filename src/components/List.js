@@ -20,14 +20,19 @@ class List extends Component {
     render() {
         return (
             <div>
-                <ul className="list"> User List
+                <ul className="list"> 
+                    <h3>Users List</h3>
+                    <strong className="listElement col-3">Name</strong>
+                    <strong className="listElement col-3">Surname</strong>
+                    <strong className="listElement col-3">Mail</strong>
+                    <strong className="listElement col-2">Date</strong>
                     {	
                         this.state.users.map(
                             (user, index) => <li key={index}>
-                            			<div className="listElement">{ user.name }</div>
-                            			<div className="listElement">{ user.surname }</div>
-                            			<div className="listElement">{ user.mail }</div>
-                            			<div className="listElement">{ new Date(user.date).toISOString().slice(0,10) }</div>
+                            			<div className="listElement col-3">{ user.name }</div>
+                            			<div className="listElement col-3">{ user.surname }</div>
+                            			<div className="listElement col-3">{ user.mail }</div>
+                            			<div className="listElement col-2">{ new Date(user.date).toISOString().slice(0,10) }</div>
                             		</li>
                         )
                     }
