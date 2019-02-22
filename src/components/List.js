@@ -17,11 +17,7 @@ class List extends Component {
             })
     }
 
-
     render() {
-
-        console.log(this.state.users)
-
         return (
             <div>
                 <ul className="list"> User List
@@ -31,7 +27,7 @@ class List extends Component {
                             			<div className="listElement">{ user.name }</div>
                             			<div className="listElement">{ user.surname }</div>
                             			<div className="listElement">{ user.mail }</div>
-                            			<div className="listElement">{ user.date }</div>
+                            			<div className="listElement">{ new Date(user.date).toISOString().slice(0,10) }</div>
                             		</li>
                         )
                     }

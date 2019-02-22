@@ -60,8 +60,8 @@ class Form extends React.Component {
 		}
 
 		const err = this.validate(newUser);
+		
 		if (!err) {
-
 		axios.post('http://localhost:4000/api/products/', newUser)
 		.then(res => console.log(res.data));
 		} 
@@ -109,10 +109,10 @@ class Form extends React.Component {
 					<button className="btn btn-primary">Submit</button>
 				</div>
 				<div className="errors">
-					<div>{this.state.nameError}</div>
-					<div>{this.state.surnameError}</div>
-					<div>{this.state.mailError}</div>
-					<div>{this.state.dateError}</div>
+					<div>{ this.state.nameError }</div>
+					<div>{ this.state.surnameError }</div>
+					<div>{ this.state.mailError }</div>
+					<div>{ this.state.dateError }</div>
 				</div>
 			</form>
 		);
